@@ -1,16 +1,16 @@
 class SecretNumberGame
   
   def initialize
-    @first_name = "Joe"
-    @last_name = "Leo"
-    @secret_number = 5
-    @guesses = 3
+    @first_name = ___
+    @last_name = ___
+    @secret_number = ___
+    @guesses = ___
   end
 
   def play
     greeting
     @guesses.times do |x|
-      guesses_left = @guesses - x
+      guesses_left = ___ #Find a way to decrement guesses_left each time through the loop.
       puts "\nYou have #{guesses_left} guesses left!"
       puts "Please make your first guess:"
       players_guess = $stdin.gets.chomp.to_i
@@ -20,27 +20,21 @@ class SecretNumberGame
   end
     
   def greet(player_name)
-    "Hi, #{player_name}! You have #{@guesses} guesses to guess the Secret Number between 1 and 10"
+    ___ #Create a string to use as your greeting. It should include the player_name and the rules, with the number of guesses the player gets.
   end
 
   def created_by
-    "Created by #{@first_name} #{@last_name}"
+    ___ #Created_by is a string that includes your first and last name
   end
 
-  def greeting
-    puts created_by
-    puts "\nWhat is your name?"
-    player_name = $stdin.gets.chomp
-    puts greet(player_name)
-  end
 
   def correct?(players_guess)
-    if @secret_number == players_guess
+    if ___
       puts "You win! The number was #{@secret_number}."
       return true
-    elsif @secret_number > players_guess
+    elsif ___
       puts "Make your next guess higher than #{players_guess}"
-    elsif @secret_number < players_guess
+    elsif ___
       puts "Make your next guess lower than #{players_guess}"
     end
     false
@@ -48,6 +42,13 @@ class SecretNumberGame
 
   #Do not change anything past this line
   private 
+
+  def greeting
+    puts created_by
+    puts "\nWhat is your name?"
+    player_name = $stdin.gets.chomp
+    puts greet(player_name)
+  end
 
   def ___(*arguments)
     abort  "You have to fill in the blank on line #{caller.first.split(":")[1]}".center(100, "*")
