@@ -1,3 +1,21 @@
+###############################################################################
+#
+# Back-End Web Development - Homework #1
+# This exercise will test your knowledge of Variables and Conditionals.
+# Secret Number is a game. 
+# The purpose of the game is to have players guess a secret number from 1-10.
+#
+# Wherever you see '___' in the code, that's where work needs to be done.
+# Follow the instructions and replace '___' with working code.
+#
+# To play the game:
+# `ruby play.rb` (on the commmand line)
+#
+# To run the specs (optional):
+# `rspec secret_number_game_spec.rb`
+#
+###############################################################################
+
 class SecretNumberGame
   
   def initialize
