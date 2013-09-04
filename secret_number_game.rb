@@ -1,7 +1,5 @@
 class SecretNumberGame
   
-  attr_writer :secret_number
-
   def initialize
     @first_name = "Joe"
     @last_name = "Leo"
@@ -21,11 +19,19 @@ class SecretNumberGame
     puts "You lost! :-( The number to guess was #{@secret_number}."
   end
     
+  def greet(player_name)
+    "Hi, #{player_name}! You have #{@guesses} guesses to guess the Secret Number between 1 and 10"
+  end
+
+  def created_by
+    "Created by #{@first_name} #{@last_name}"
+  end
+
   def greeting
-    puts "Created by #{@first_name} #{@last_name}"
+    puts created_by
     puts "\nWhat is your name?"
     player_name = $stdin.gets.chomp
-    puts "Hi, #{player_name}! You have 3 guesses to guess the Secret Number between 1 and 10"
+    puts greet(player_name)
   end
 
   def correct?(players_guess)
@@ -38,5 +44,12 @@ class SecretNumberGame
       puts "Make your next guess lower than #{players_guess}"
     end
     false
+  end
+
+  #Do not change anything past this line
+  private 
+
+  def ___(*arguments)
+    abort  "You have to fill in the blank on line #{caller.first.split(":")[1]}".center(100, "*")
   end
 end

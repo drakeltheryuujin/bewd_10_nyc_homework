@@ -1,7 +1,37 @@
 require 'rspec'
 require './secret_number_game'
 
+class SecretNumberGame
+  attr_writer :first_name, :last_name, :secret_number, :guesses
+end
+
 describe SecretNumberGame do
+  before do
+    @secret_number_game = SecretNumberGame.new
+  end
+
+  context "#created_by" do
+    it "will give the game's creator" do
+      @secret_number_game.first_name = "Joe"
+      @secret_number_game.last_name = "Leo"
+
+      @secret_number_game.created_by.should include("Joe")
+      @secret_number_game.created_by.should include("Leo")
+    end
+  end
+
+  context "#greeting" do
+    it "will greet the player by name" do
+      @secret_number_game.greet("Joe").should include("Joe")
+    end
+
+    it "will say how many guesses are left" do
+      @secret_number_game.guesses = 4
+      
+      @secret_number_game.greet("Joe").should include("4")
+    end
+  end
+
   context "Guessing" do
     before do
       @secret_number_game = SecretNumberGame.new
