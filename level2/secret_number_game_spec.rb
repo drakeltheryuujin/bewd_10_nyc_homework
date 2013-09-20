@@ -1,8 +1,9 @@
 require 'rspec'
+require 'mocha/setup'
 require './secret_number_game'
 
 class SecretNumberGame
-  attr_writer :first_name, :last_name, :secret_number, :guesses
+  attr_accessor :first_name, :last_name, :secret_number, :guesses
 end
 
 describe SecretNumberGame do
@@ -33,10 +34,72 @@ describe SecretNumberGame do
   end
 
   context "difficulty" do
-    it "will set number of guesses based on difficulty" do
-      @secret_number_game.set_difficulty "medium"
+    context "medium" do
+      it "will set number of guesses" do
+        @secret_number_game.set_difficulty "medium"
 
-      @secret_number_game.guesses.should eq(3)
+        @secret_number_game.guesses.should eq(3)
+      end
+
+      it "should behave the same for 2" do
+        @secret_number_game.set_difficulty "2"
+
+        @secret_number_game.guesses.should eq(3)
+      end
+
+      it "is case insensitive" do
+        @secret_number_game.set_difficulty "MeDIum"
+
+        @secret_number_game.guesses.should eq(3)
+      end
+    end
+
+    context "hard" do
+      it "will set number of guesses" do
+        @secret_number_game.set_difficulty "hard"
+
+        @secret_number_game.guesses.should eq(1)
+      end
+
+      it "should behave the same for 3" do
+        @secret_number_game.set_difficulty "3"
+
+        @secret_number_game.guesses.should eq(1)
+      end
+
+      it "is case-insensitive" do
+        @secret_number_game.set_difficulty "HaRD"
+
+        @secret_number_game.guesses.should eq(1)
+      end
+    end
+    
+    context "easy" do
+      it "will set number of guesses for easy" do
+        @secret_number_game.set_difficulty "Easy"
+
+        @secret_number_game.guesses.should eq(5)
+      end
+      
+      it "should behave the same for 1" do
+        @secret_number_game.set_difficulty "1"
+
+        @secret_number_game.guesses.should eq(5)
+      end
+
+      it "is case-insensitive" do
+        @secret_number_game.set_difficulty "EasY"
+
+        @secret_number_game.guesses.should eq(5)
+      end
+    end
+
+    context "nonsense" do
+      it "will ask again if no match" do
+        @secret_number_game.expects(:ask_difficulty).once
+
+        @secret_number_game.set_difficulty "foobar"
+      end
     end
   end
 

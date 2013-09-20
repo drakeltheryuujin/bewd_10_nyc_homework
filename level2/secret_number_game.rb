@@ -27,6 +27,7 @@ class SecretNumberGame
 
   def play
     greeting
+    
     @guesses.times do |x|
       guesses_left = ___ #Find a way to decrement guesses_left each time through the loop.
       puts "\nYou have #{guesses_left} guesses left!"
@@ -35,6 +36,25 @@ class SecretNumberGame
       return if correct?(players_guess)
     end
     puts "You lost! :-( The number to guess was #{@secret_number}."
+  end
+
+  def ask_difficulty
+    puts "\nChoose your level of difficulty"
+    puts "\n1. Easy"
+    puts "\n2. Medium"
+    puts "\n3. Hard"
+
+    set_difficulty = $stdin.gets.chomp
+  end
+
+  def set_difficulty(level)
+    if level.downcase == "medium" || level == "2"
+      @guesses = 3
+    elsif level.downcase == "hard" || level == "3"
+      @guesses = 1
+    elsif level.downcase == "easy" || level == "1"
+      @guesses = 5
+    end
   end
     
   def greet(player_name)
@@ -63,6 +83,7 @@ class SecretNumberGame
 
   def greeting
     puts created_by
+    ask_difficulty
     puts "\nWhat is your name?"
     player_name = $stdin.gets.chomp
     puts greet(player_name)
