@@ -1,6 +1,10 @@
 require 'rspec'
-require 'mocha/setup'
+require 'mocha/api'
 require './secret_number_game'
+
+RSpec.configure do |config|
+  config.mock_framework = :mocha
+end
 
 class SecretNumberGame
   attr_accessor :first_name, :last_name, :secret_number, :guesses

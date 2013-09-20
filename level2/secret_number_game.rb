@@ -54,6 +54,8 @@ class SecretNumberGame
       @guesses = 1
     elsif level.downcase == "easy" || level == "1"
       @guesses = 5
+    else
+      ask_difficulty
     end
   end
     
