@@ -39,24 +39,11 @@ class SecretNumberGame
   end
 
   def ask_difficulty
-    puts "\nChoose your level of difficulty"
-    puts "\n1. Easy"
-    puts "\n2. Medium"
-    puts "\n3. Hard"
-
-    set_difficulty = $stdin.gets.chomp
+    ___ # As the user if they want to play on easy (1), medium (2), or hard (3)
   end
 
   def set_difficulty(level)
-    if level.downcase == "medium" || level == "2"
-      @guesses = 3
-    elsif level.downcase == "hard" || level == "3"
-      @guesses = 1
-    elsif level.downcase == "easy" || level == "1"
-      @guesses = 5
-    else
-      ask_difficulty
-    end
+    ___ # limit the number of guesses based on the difficulty
   end
     
   def greet(player_name)
