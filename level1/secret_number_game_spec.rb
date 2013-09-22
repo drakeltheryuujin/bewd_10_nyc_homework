@@ -1,5 +1,5 @@
 require 'rspec'
-require './secret_number_game'
+require_relative 'secret_number_game'
 
 class SecretNumberGame
   attr_writer :first_name, :last_name, :secret_number, :guesses

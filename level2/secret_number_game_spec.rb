@@ -1,6 +1,6 @@
 require 'rspec'
 require 'mocha/api'
-require './secret_number_game'
+require_relative 'secret_number_game'
 
 RSpec.configure do |config|
   config.mock_framework = :mocha
