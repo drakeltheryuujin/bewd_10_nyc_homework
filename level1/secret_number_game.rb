@@ -2,7 +2,7 @@
 #
 # Back-End Web Development - Homework #1
 # This exercise will test your knowledge of Variables and Conditionals.
-# Secret Number is a game. 
+# Secret Number is a game.
 # The purpose of the game is to have players guess a secret number from 1-10.
 #
 # Wherever you see '___' in the code, that's where work needs to be done.
@@ -17,18 +17,18 @@
 ###############################################################################
 
 class SecretNumberGame
-  
+
   def initialize
-    @first_name = ___
-    @last_name = ___
-    @secret_number = ___
-    @guesses = ___
+    @first_name = "Kellye"
+    @last_name = "Greene"
+    @secret_number = rand(1..10)
+    @guesses = 5
   end
 
   def play
     greeting
     @guesses.times do |x|
-      guesses_left = ___ #Find a way to decrement guesses_left each time through the loop.
+      guesses_left = 1 + @guesses -= 1 unless @value == 1  #Find a way to decrement guesses_left each time through the loop.
       puts "\nYou have #{guesses_left} guesses left!"
       puts "Please make your first guess:"
       players_guess = $stdin.gets.chomp.to_i
@@ -36,30 +36,30 @@ class SecretNumberGame
     end
     puts "You lost! :-( The number to guess was #{@secret_number}."
   end
-    
+
   def greet(player_name)
-    ___ #Create a string to use as your greeting. It should include the player_name and the rules, with the number of guesses the player gets.
+    "Muahahahaha! Velcome to secret number, #{player_name}! You have #{@guesses} guesses." #Create a string to use as your greeting. It should include the player_name and the rules, with the number of guesses the player gets.
   end
 
   def created_by
-    ___ #Created_by is a string that includes your first and last name
+    "Created By: #{@first_name} #{@last_name}" #Created_by is a string that includes your first and last name
   end
 
 
   def correct?(players_guess)
-    if ___
+    if players_guess == @secret_number
       puts "You win! The number was #{@secret_number}."
       return true
-    elsif ___
+    elsif players_guess < @secret_number
       puts "Make your next guess higher than #{players_guess}"
-    elsif ___
+    elsif players_guess > @secret_number
       puts "Make your next guess lower than #{players_guess}"
     end
     false
   end
 
   #Do not change anything past this line
-  private 
+  private
 
   def greeting
     puts created_by
